@@ -61,8 +61,11 @@ int main()
 			big_rect=bound_rect[i];
 	}
 
-	// cut the image to have only the quadro
-	src(big_rect).copyTo(dst);
+	//consider only if the biggest rect is not too small respect the size of src
+	if (big_rect.area() > (s.area()*0.60) )
+		src(big_rect).copyTo(dst); // cut the image to have only the quadro
+	else
+		dst=src;
 
 	cv::imshow("src", src);
 	cv::imshow("dst", dst);
